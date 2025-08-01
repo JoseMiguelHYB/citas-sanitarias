@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Listado de Pacientes</title>
+		<style>
+		    table {
+		        border-collapse: collapse;
+		        width: 70%;
+		        margin: auto;
+		    }
+		    th, td {
+		        border: 1px solid black;
+		        padding: 8px 12px;
+		        text-align: center;
+		    }
+		    th {
+		        background-color: #fff3bf;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Listado de Pacientes</h1>
+		<table>
+		    <thead>
+		        <tr>
+		            <th>ID</th>
+		            <th>Código</th>
+		            <th>Fecha Nacimiento</th>
+		            <th>DNI</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr th:each="paciente : ${pacientes}">
+		            <td th:text="${paciente.id}"></td>
+		            <td th:text="${paciente.codigoIdentificacion}"></td>
+		            <td th:text="${paciente.fechaNacimiento}"></td>
+		            <td th:text="${paciente.dni}"></td>
+		        </tr>
+		    </tbody>
+		</table>	
+	</body>
+</html>
