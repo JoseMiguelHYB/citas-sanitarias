@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Listado de Pacientes</title>
+	</head>
+	<body>
+		<h1>Lsitado de Pacientes</h1>
+		<ul>
+			<li th:each="paciente : ${pacientes}">
+				<span th:text="${paciente.nombre}">Nombre</span>
+				(<span th:text="${paciente.fecha}">Fecha</span>)
+			</li>			
+		</ul>		
+	</body>
+</html>
