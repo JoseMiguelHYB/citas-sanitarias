@@ -56,8 +56,8 @@
                         (cita.estado == 'PENDIENTE' ? 'pendiente' :
                         (cita.estado == 'CONFIRMADA' ? 'confirmada' : ''))}">
                 </td>
-                <td th:text="${cita.paciente}"></td>
-                <td th:text="${cita.medico}"></td>
+                <td th:text="${cita.paciente.nombre}"></td>
+                <td th:text="${cita.medico.nombre}"></td>
             </tr>
         </tbody>
     </table>

@@ -25,15 +25,21 @@ public class Paciente {
 
     private String dni;
 
+    @Column(name = "nombre")
+    private String nombre; // Nuevo campo
+
     public Paciente() {
     }
 
-    public Paciente(Long id, String codigoIdentificacion, LocalDate fechaNacimiento, String dni) {
+    public Paciente(Long id, String codigoIdentificacion, LocalDate fechaNacimiento, String dni, String nombre) {
         this.id = id;
         this.codigoIdentificacion = codigoIdentificacion;
         this.fechaNacimiento = fechaNacimiento;
         this.dni = dni;
+        this.nombre = nombre;
     }
+
+    // Getters y Setters
 
     public Long getId() {
         return id;
@@ -67,6 +73,14 @@ public class Paciente {
         this.dni = dni;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     @Override
     public String toString() {
         return "Paciente{" +
@@ -74,6 +88,7 @@ public class Paciente {
                 ", codigoIdentificacion='" + codigoIdentificacion + '\'' +
                 ", fechaNacimiento=" + fechaNacimiento +
                 ", dni='" + dni + '\'' +
+                ", nombre='" + nombre + '\'' +
                 '}';
     }
 }

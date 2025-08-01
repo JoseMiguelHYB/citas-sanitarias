@@ -1,16 +1,75 @@
-<!-- src/main/resources/static/index.html -->
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://thymeleaf.org">
-	<head>
-		<meta charset="UTF-8">
-		<title>Citas Sanitarias</title>
-	</head>		
-	<body>
-		<h1 style="text-align: center; margin-top: 50px; color: red;">
-			Bienvenido al Sistema de Citas Sanitarias			
-		</h1>
-		<p style="text-align: center;">
-			Esta es la página de inicio.
-		</p>			
-	</body>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Citas Sanitarias - Inicio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="icon" href="/static/favicon.png"> <!-- Reemplázalo por tu favicon -->
+
+    <style>
+        body {
+            background-color: #ffe6e6;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 90vh;
+            margin: 0;
+        }
+
+        .card-container {
+            max-width: 500px;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+		.logo-placeholder {
+		    margin: 0 auto 2rem; /* un poco más de margen inferior */
+		}
+
+		.logo-img {
+		    width: 300px;
+		    height: 300px;
+		    object-fit: cover;
+		    border-radius: 50%;
+		}
+
+        footer {
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Contenedor principal -->
+<div class="card-container text-center">
+
+	<!-- Imagen del logo más grande y sin fondo ni sombra -->
+	<div class="logo-placeholder">
+	    <img src="/img/cita-salud.jpg" alt="Logo" class="img-fluid rounded-circle logo-img">
+	</div>
+
+    <!-- Título y subtítulo -->
+    <h2 class="text-danger fw-bold mt-2">Bienvenido a la Gestión de Citas Sanitarias</h2>
+    <p class="text-muted fs-5">Gestiona todas tus citas de Atención Primaria y Especialidades</p>
+
+    <!-- Línea separadora -->
+    <hr class="my-4">
+
+    <!-- Botones -->
+    <div class="d-grid gap-3 mt-4 mb-4">
+        <a class="btn btn-success btn-lg" href="/registro">📝 Regístrate para empezar</a>
+        <a class="btn btn-outline-primary btn-lg" href="/login">🔐 Iniciar Sesión</a>
+    </div>
+
+    <!-- Footer informativo -->
+    <footer class="text-center mt-3 text-muted">
+        Proyecto personal desarrollado por <strong>José Miguel Castro Huayllas</strong><br>
+        Java + Spring Boot · Thymeleaf · CSS en línea
+    </footer>
+</div>
+
+</body>
 </html>
