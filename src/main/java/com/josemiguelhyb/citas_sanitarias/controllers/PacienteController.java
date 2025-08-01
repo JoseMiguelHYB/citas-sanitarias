@@ -1,7 +1,6 @@
 package com.josemiguelhyb.citas_sanitarias.controllers;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,7 +25,7 @@ public class PacienteController {
 	
 	@GetMapping
 	public String getAllPersonas(Model model) {
-		model.addAttribute("pacientes", pacientes);
-		return "pacientes";
+		model.addAttribute("pacientes", pacientes); // Se añade la lista al Model, para que la vista pueda acceder a ${pacientes}
+		return "pacientes"; // Nombre de la plantilla de thymeleaf
 	}		
 }

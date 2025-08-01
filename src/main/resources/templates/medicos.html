@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Listado de Médicos</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 70%;
+            margin: auto;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #d0ebff;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Listado de Médicos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Especialidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="medico : ${medicos}">
+                <td th:text="${medico.id}"></td>
+                <td th:text="${medico.nombre}"></td>
+                <td th:text="${medico.especialidad}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -12,7 +12,7 @@
 		    th, td {
 		        border: 1px solid black;
 		        padding: 8px 12px;
-		        text-align: center;
+				text-align: center;
 		    }
 		    th {
 		        background-color: #fff3bf;
@@ -20,7 +20,7 @@
 		</style>
 	</head>
 	<body>
-		<h1>Listado de Pacientes</h1>
+		<h1 style="text-align: center;">Listado de Pacientes</h1>
 		<table>
 		    <thead>
 		        <tr>
@@ -31,7 +31,7 @@
 		        </tr>
 		    </thead>
 		    <tbody>
-		        <tr th:each="paciente : ${pacientes}">
+		        <tr th:each="paciente : ${pacientes}"> <!-- este pacientes es del Model -->
 		            <td th:text="${paciente.id}"></td>
 		            <td th:text="${paciente.codigoIdentificacion}"></td>
 		            <td th:text="${paciente.fechaNacimiento}"></td>
