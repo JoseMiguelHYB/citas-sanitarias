@@ -2,68 +2,78 @@ package com.josemiguelhyb.citas_sanitarias.models;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "paciente")
 public class Paciente {
-	@Id
-	// @GeneratedValue(strategy = GenerationType.IDENTITY) // Ya que no usamos BD de momento
-	private Long id;	
-	private String codigoIdentificacion;
-	private LocalDate fechaNacimiento;
-	private String dni;
-	
-	public Paciente() {
-		
-	}
-	
-	public Paciente(Long id, String codigoIdentificacion, LocalDate fechaNacimiento, String dni) {
-		this.id = id;
-		this.codigoIdentificacion = codigoIdentificacion;
-		this.fechaNacimiento = fechaNacimiento;
-		this.dni = dni;
-	}
 
-	public Long getId() {
-		return id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column(name = "codigo_identificacion")
+    private String codigoIdentificacion;
 
-	public String getCodigoIdentificacion() {
-		return codigoIdentificacion;
-	}
+    @Column(name = "fecha_nacimiento")
+    private LocalDate fechaNacimiento;
 
-	public void setCodigoIdentificacion(String codigoIdentificacion) {
-		this.codigoIdentificacion = codigoIdentificacion;
-	}
+    private String dni;
 
-	public LocalDate getFechaNacimiento() {
-		return fechaNacimiento;
-	}
+    public Paciente() {
+    }
 
-	public void setFechaNacimiento(LocalDate fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}
+    public Paciente(Long id, String codigoIdentificacion, LocalDate fechaNacimiento, String dni) {
+        this.id = id;
+        this.codigoIdentificacion = codigoIdentificacion;
+        this.fechaNacimiento = fechaNacimiento;
+        this.dni = dni;
+    }
 
-	public String getDni() {
-		return dni;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setDni(String dni) {
-		this.dni = dni;
-	}	
-	
-	@Override
-	public String toString() {
-	    return "Paciente{" +
-	            "id=" + id +
-	            ", codigoIdentificacion='" + codigoIdentificacion + '\'' +
-	            ", fechaNacimiento=" + fechaNacimiento +
-	            ", dni='" + dni + '\'' +
-	            '}';
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCodigoIdentificacion() {
+        return codigoIdentificacion;
+    }
+
+    public void setCodigoIdentificacion(String codigoIdentificacion) {
+        this.codigoIdentificacion = codigoIdentificacion;
+    }
+
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    @Override
+    public String toString() {
+        return "Paciente{" +
+                "id=" + id +
+                ", codigoIdentificacion='" + codigoIdentificacion + '\'' +
+                ", fechaNacimiento=" + fechaNacimiento +
+                ", dni='" + dni + '\'' +
+                '}';
+    }
 }
