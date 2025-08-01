@@ -17,6 +17,19 @@
         th {
             background-color: #d3f9d8;
         }
+        /* Colores por estado */
+        .cancelada {
+            color: red;
+            font-weight: bold;
+        }
+        .pendiente {
+            color: orange;
+            font-weight: bold;
+        }
+        .confirmada {
+            color: green;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -37,9 +50,14 @@
                 <td th:text="${cita.id}"></td>
                 <td th:text="${#temporals.format(cita.fechaHora, 'dd/MM/yyyy HH:mm')}"></td>
                 <td th:text="${cita.motivo}"></td>
-                <td th:text="${cita.estado}"></td>
-                <td th:text="${cita.pacienteId}"></td>
-                <td th:text="${cita.medicoId}"></td>
+                <td th:text="${cita.estado}"
+                    th:classappend="${
+                        cita.estado == 'CANCELADA' ? 'cancelada' :
+                        (cita.estado == 'PENDIENTE' ? 'pendiente' :
+                        (cita.estado == 'CONFIRMADA' ? 'confirmada' : ''))}">
+                </td>
+                <td th:text="${cita.paciente}"></td>
+                <td th:text="${cita.medico}"></td>
             </tr>
         </tbody>
     </table>
