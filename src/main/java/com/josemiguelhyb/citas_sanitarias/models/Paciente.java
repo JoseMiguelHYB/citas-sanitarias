@@ -1,20 +1,21 @@
 package com.josemiguelhyb.citas_sanitarias.models;
 
-import java.time.LocalDate;
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Table;
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "paciente")
 public class Paciente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // IDENTITY usa una columna autoincremental
     private Long id;
 
     @Column(name = "codigo_identificacion")
@@ -28,9 +29,11 @@ public class Paciente {
     @Column(name = "nombre")
     private String nombre; // Nuevo campo
 
+    // Constructor por defecto
     public Paciente() {
     }
 
+    // Constructor con parámetros
     public Paciente(Long id, String codigoIdentificacion, LocalDate fechaNacimiento, String dni, String nombre) {
         this.id = id;
         this.codigoIdentificacion = codigoIdentificacion;
@@ -40,7 +43,6 @@ public class Paciente {
     }
 
     // Getters y Setters
-
     public Long getId() {
         return id;
     }

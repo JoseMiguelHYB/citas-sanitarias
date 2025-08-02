@@ -12,7 +12,7 @@ import com.josemiguelhyb.citas_sanitarias.models.Medico;
 import com.josemiguelhyb.citas_sanitarias.services.MedicoService;
 
 @RestController
-@RequestMapping("api/medicos")
+@RequestMapping("/api/medicos")
 public class MedicoRestController {
 	private MedicoService medicoService;
 

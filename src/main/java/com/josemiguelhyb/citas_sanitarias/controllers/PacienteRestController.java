@@ -1,5 +1,4 @@
 // Aplicación REST
-
 package com.josemiguelhyb.citas_sanitarias.controllers;
 
 import java.util.List;
@@ -12,7 +11,7 @@ import com.josemiguelhyb.citas_sanitarias.models.Paciente;
 import com.josemiguelhyb.citas_sanitarias.services.PacienteService;
 
 @RestController
-@RequestMapping("api/pacientes")
+@RequestMapping("/api/pacientes")
 public class PacienteRestController {
 	
 	private PacienteService pacienteService;

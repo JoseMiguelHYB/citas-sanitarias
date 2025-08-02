@@ -10,7 +10,7 @@ import com.josemiguelhyb.citas_sanitarias.models.Cita;
 import com.josemiguelhyb.citas_sanitarias.services.CitaService;
 
 @RestController
-@RequestMapping("api/citas")
+@RequestMapping("/api/citas")
 public class CitaRestController {
 	private CitaService citaService;
 
