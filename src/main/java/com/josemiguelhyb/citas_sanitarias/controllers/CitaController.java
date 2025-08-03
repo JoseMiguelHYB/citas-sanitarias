@@ -20,4 +20,6 @@ public class CitaController {
         model.addAttribute("citas", citaService.getAllCitas());
         return "citas"; // thymeleaf: citas.html
     }
+    
+    
 }

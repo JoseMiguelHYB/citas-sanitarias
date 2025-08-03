@@ -15,8 +15,14 @@ import java.time.LocalDate;
 public class Paciente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // IDENTITY usa una columna autoincremental
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "username", unique = true, nullable = false)
+    private String username;
+
+    @Column(name = "passwd", nullable = false)
+    private String password;   
 
     @Column(name = "codigo_identificacion")
     private String codigoIdentificacion;
@@ -27,15 +33,14 @@ public class Paciente {
     private String dni;
 
     @Column(name = "nombre")
-    private String nombre; // Nuevo campo
+    private String nombre;
 
-    // Constructor por defecto
-    public Paciente() {
-    }
+    public Paciente() {}
 
-    // Constructor con parámetros
-    public Paciente(Long id, String codigoIdentificacion, LocalDate fechaNacimiento, String dni, String nombre) {
+    public Paciente(Long id, String username, String password, String codigoIdentificacion, LocalDate fechaNacimiento, String dni, String nombre) {
         this.id = id;
+        this.username = username;
+        this.password = password;
         this.codigoIdentificacion = codigoIdentificacion;
         this.fechaNacimiento = fechaNacimiento;
         this.dni = dni;
@@ -43,12 +48,29 @@ public class Paciente {
     }
 
     // Getters y Setters
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getCodigoIdentificacion() {
@@ -87,6 +109,8 @@ public class Paciente {
     public String toString() {
         return "Paciente{" +
                 "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 ", codigoIdentificacion='" + codigoIdentificacion + '\'' +
                 ", fechaNacimiento=" + fechaNacimiento +
                 ", dni='" + dni + '\'' +

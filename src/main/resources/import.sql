@@ -1,9 +1,9 @@
 -- Pacientes
-INSERT INTO paciente (codigo_identificacion, fecha_nacimiento, dni, nombre) VALUES ('P001', '1990-03-14', '12345678A', 'Miguel');
-INSERT INTO paciente (codigo_identificacion, fecha_nacimiento, dni, nombre) VALUES ('P002', '1985-07-22', '87654321B', 'Luis');
-INSERT INTO paciente (codigo_identificacion, fecha_nacimiento, dni, nombre) VALUES ('P003', '2000-11-05', '11223344C', 'Pedro');
-INSERT INTO paciente (codigo_identificacion, fecha_nacimiento, dni, nombre) VALUES ('P004', '1978-01-30', '44556677D', 'Laura');
-INSERT INTO paciente (codigo_identificacion, fecha_nacimiento, dni, nombre) VALUES ('P005', '1995-09-18', '99887766E', 'Jennifer');
+INSERT INTO paciente (username, passwd, codigo_identificacion, fecha_nacimiento, dni, nombre) VALUES ('mikisweet', 'moratalaz', 'P001', '1990-03-14', '12345678A', 'Miguel');
+INSERT INTO paciente (username, passwd, codigo_identificacion, fecha_nacimiento, dni, nombre) VALUES ('luisfelox', 'pantalla', 'P002', '1985-07-22', '87654321B', 'Luis');
+INSERT INTO paciente (username, passwd, codigo_identificacion, fecha_nacimiento, dni, nombre) VALUES ('mikisweet2', 'moratalaz', 'P003', '2000-11-05', '11223344C', 'Pedro');
+INSERT INTO paciente (username, passwd, codigo_identificacion, fecha_nacimiento, dni, nombre) VALUES ('lauraducle', 'moratalaz', 'P004', '1978-01-30', '44556677D', 'Laura');
+INSERT INTO paciente (username, passwd, codigo_identificacion, fecha_nacimiento, dni, nombre) VALUES ('lunita', 'moratalaz', 'P005', '1995-09-18', '99887766E', 'Jennifer');
 
 -- Médicos
 INSERT INTO medico (nombre, especialidad) VALUES ('Dr. Marta Sánchez', 'Cardiología');
