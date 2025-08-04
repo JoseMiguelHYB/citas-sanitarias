@@ -14,21 +14,21 @@ public class Paciente {
     @Column(name = "username", unique = true, nullable = false)
     private String username;
 
-    @Column(name = "passwd", nullable = false)
-    private String password;
-
-    @Column(name = "codigo_identificacion")
-    private String codigoIdentificacion;
-
-    @Column(name = "fecha_nacimiento")
-    private LocalDate fechaNacimiento;
-
-    private String dni;
-
     private String nombre;
 
     private String apellido;
 
+    @Column(name = "codigo_identificacion")
+    private String codigoIdentificacion;    
+    
+    @Column(name = "passwd", nullable = false)
+    private String password;
+    
+    private String dni;
+
+    @Column(name = "fecha_nacimiento")
+    private LocalDate fechaNacimiento;
+    
     private String telefono;
 
     private String email;
@@ -44,8 +44,6 @@ public class Paciente {
 
     @Column(name = "numero_seguridad_social")
     private String numeroSeguridadSocial;
-
-    private Boolean activo;
 
     public Paciente() {}
 
@@ -68,7 +66,6 @@ public class Paciente {
         this.codigoPostal = codigoPostal;
         this.genero = genero;
         this.numeroSeguridadSocial = numeroSeguridadSocial;
-        this.activo = activo;
     }
 
     // Getters y Setters
@@ -118,8 +115,6 @@ public class Paciente {
     public String getNumeroSeguridadSocial() { return numeroSeguridadSocial; }
     public void setNumeroSeguridadSocial(String numeroSeguridadSocial) { this.numeroSeguridadSocial = numeroSeguridadSocial; }
 
-    public Boolean getActivo() { return activo; }
-    public void setActivo(Boolean activo) { this.activo = activo; }
 
     @Override
     public String toString() {
@@ -139,7 +134,6 @@ public class Paciente {
                 ", codigoPostal='" + codigoPostal + '\'' +
                 ", genero='" + genero + '\'' +
                 ", numeroSeguridadSocial='" + numeroSeguridadSocial + '\'' +
-                ", activo=" + activo +
                 '}';
     }
 }

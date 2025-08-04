@@ -1,49 +1,96 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://thymeleaf.org">
-	<head>
-		<meta charset="UTF-8"/>
-		<title>Listado de Pacientes</title>
-		<style>
-		    table {
-		        border-collapse: collapse;
-		        width: 70%;
-		        margin: auto;
-		    }
-		    th, td {
-		        border: 1px solid black;
-		        padding: 8px 12px;
-				text-align: center;
-		    }
-		    th {
-		        background-color: #fff3bf;
-		    }
-		</style>
-	</head>
-	<body>
-		<h1 style="text-align: center;">Listado de Pacientes</h1>
-		<table>
-		    <thead>
-		        <tr>
-					<th>ID</th>
-					<th>Usuario</th>
-					<th>Nombre</th>
-					<th>DNI</th>
-					<th>Fecha Nacimiento</th>
-					<th>Código ID</th>
-					<th>Contraseña</th> <!-- Nueva columna -->
-		        </tr>
-		    </thead>
-		    <tbody>
-				<tr th:each="paciente : ${pacientes}">
-					<td th:text="${paciente.id}">1</td>
-					<td th:text="${paciente.username}">usuario</td>
-					<td th:text="${paciente.nombre}">nombre</td>
-					<td th:text="${paciente.dni}">dni</td>
-					<td th:text="${paciente.fechaNacimiento}">fecha</td>
-					<td th:text="${paciente.codigoIdentificacion}">codigo</td>
-					<td th:text="${paciente.password}">password</td> <!-- Muestra contraseña -->
-				</tr>
-		    </tbody>
-		</table>	
-	</body>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Listado de Pacientes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 95%;
+            margin: auto;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 4px 6px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #fff3bf;
+        }
+
+        .btn-ver {
+            background-color: #3498db;
+            color: white;
+            padding: 3px 6px;
+            font-size: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-ver:hover {
+            background-color: #2980b9;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Listado de Pacientes</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>User</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Cód. ID</th>
+                <th>Pass</th>
+                <th>DNI</th>
+                <th>F. Nac.</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Dirección</th>
+                <th>Localidad</th>
+                <th>C.P.</th>
+                <th>Género</th>
+                <th>NSS</th>
+                <!--<th>Acción</th>-->
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="paciente : ${pacientes}">
+                <td th:text="${paciente.id}">1</td>
+                <td th:text="${paciente.username}">usuario</td>
+                <td th:text="${paciente.nombre}">nombre</td>
+                <td th:text="${paciente.apellido}">apellido</td>
+                <td th:text="${paciente.codigoIdentificacion}">123456</td>
+                <td th:text="${paciente.password}">pass</td>
+                <td th:text="${paciente.dni}">dni</td>
+                <td th:text="${paciente.fechaNacimiento}">1990-01-01</td>
+                <td th:text="${paciente.telefono}">600000000</td>
+                <td th:text="${paciente.email}">correo@example.com</td>
+                <td th:text="${paciente.direccion}">Calle X</td>
+                <td th:text="${paciente.localidad}">Madrid</td>
+                <td th:text="${paciente.codigoPostal}">28000</td>
+                <td th:text="${paciente.genero}">F</td>
+                <td th:text="${paciente.numeroSeguridadSocial}">SS123456</td>
+                <!--<td>
+                    <a th:href="@{'/paciente/' + ${paciente.id}}" class="btn-ver">Ver más</a>
+                </td>-->
+            </tr>
+        </tbody>
+    </table>
+</body>
 </html>

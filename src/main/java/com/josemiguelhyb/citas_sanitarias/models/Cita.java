@@ -2,14 +2,7 @@ package com.josemiguelhyb.citas_sanitarias.models;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "cita")
@@ -19,34 +12,62 @@ public class Cita {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "fecha_hora")
+    @Column(name = "fecha_hora", nullable = false)
     private LocalDateTime fechaHora;
 
-    @Column(name = "motivo")
+    @Column(nullable = false)
     private String motivo;
 
-    @Column(name = "estado")
+    @Column(nullable = false)
     private String estado;
 
     @ManyToOne
-    @JoinColumn(name = "paciente_id")
+    @JoinColumn(name = "paciente_id", nullable = false)
     private Paciente paciente;
 
     @ManyToOne
-    @JoinColumn(name = "medico_id")
+    @JoinColumn(name = "medico_id", nullable = false)
     private Medico medico;
 
-    public Cita() {
-    }
+    @Column(name = "tipo_consulta")
+    private String tipoConsulta; // Presencial/telefónica/Online
 
-    public Cita(Long id, LocalDateTime fechaHora, String motivo, String estado, Paciente paciente, Medico medico) {
-        this.id = id;
+    @Column
+    private String ubicacion; // Si cambia el centro
+
+    @Column
+    private String observaciones;
+
+    @Column(name = "creada_en")
+    private LocalDateTime creadaEn;
+
+    @Column(name = "modificada_en")
+    private LocalDateTime modificadaEn;
+
+    @Column(name = "duracion_minutos")
+    private Integer duracionMinutos;
+
+    // Constructor vacío
+    public Cita() {}
+
+    // Constructor con todos los campos (excepto ID autogenerado)
+    public Cita(LocalDateTime fechaHora, String motivo, String estado, Paciente paciente, Medico medico,
+                String tipoConsulta, String ubicacion, String observaciones,
+                LocalDateTime creadaEn, LocalDateTime modificadaEn, Integer duracionMinutos) {
         this.fechaHora = fechaHora;
         this.motivo = motivo;
         this.estado = estado;
         this.paciente = paciente;
         this.medico = medico;
+        this.tipoConsulta = tipoConsulta;
+        this.ubicacion = ubicacion;
+        this.observaciones = observaciones;
+        this.creadaEn = creadaEn;
+        this.modificadaEn = modificadaEn;
+        this.duracionMinutos = duracionMinutos;
     }
+
+    // Getters y setters
 
     public Long getId() {
         return id;
@@ -96,9 +117,69 @@ public class Cita {
         this.medico = medico;
     }
 
+    public String getTipoConsulta() {
+        return tipoConsulta;
+    }
+
+    public void setTipoConsulta(String tipoConsulta) {
+        this.tipoConsulta = tipoConsulta;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+
+    public LocalDateTime getCreadaEn() {
+        return creadaEn;
+    }
+
+    public void setCreadaEn(LocalDateTime creadaEn) {
+        this.creadaEn = creadaEn;
+    }
+
+    public LocalDateTime getModificadaEn() {
+        return modificadaEn;
+    }
+
+    public void setModificadaEn(LocalDateTime modificadaEn) {
+        this.modificadaEn = modificadaEn;
+    }
+
+    public Integer getDuracionMinutos() {
+        return duracionMinutos;
+    }
+
+    public void setDuracionMinutos(Integer duracionMinutos) {
+        this.duracionMinutos = duracionMinutos;
+    }
+
     @Override
     public String toString() {
-        return "Cita [id=" + id + ", fechaHora=" + fechaHora + ", motivo=" + motivo + ", estado=" + estado
-                + ", paciente=" + paciente + ", medico=" + medico + "]";
+        return "Cita{" +
+                "id=" + id +
+                ", fechaHora=" + fechaHora +
+                ", motivo='" + motivo + '\'' +
+                ", estado='" + estado + '\'' +
+                ", paciente=" + paciente +
+                ", medico=" + medico +
+                ", tipoConsulta='" + tipoConsulta + '\'' +
+                ", ubicacion='" + ubicacion + '\'' +
+                ", observaciones='" + observaciones + '\'' +
+                ", creadaEn=" + creadaEn +
+                ", modificadaEn=" + modificadaEn +
+                ", duracionMinutos=" + duracionMinutos +
+                '}';
     }
 }

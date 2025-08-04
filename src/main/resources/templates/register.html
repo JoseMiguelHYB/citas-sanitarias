@@ -124,11 +124,12 @@
 			text-decoration: underline;
 		}
 
-		.row.g-3 > .col-md-4 {
+		.row.g-3>.col-md-4 {
 			margin-bottom: 0.5rem;
 		}
 
-		@media (max-height: 800px), (max-width: 900px) {
+		@media (max-height: 800px),
+		(max-width: 900px) {
 			.container-login {
 				max-width: 800px;
 				padding: 1rem;
@@ -139,7 +140,8 @@
 			}
 		}
 
-		@media (max-height: 600px), (max-width: 600px) {
+		@media (max-height: 600px),
+		(max-width: 600px) {
 			.col-md-4 {
 				width: 100%;
 			}
@@ -179,8 +181,24 @@
 		<form th:action="@{/register}" th:object="${paciente}" method="post">
 			<div class="row g-3">
 				<div class="col-md-4">
-					<label for="username">Usuario</label>
+					<label for="username">User Name</label>
 					<input type="text" th:field="*{username}" id="username" class="form-control" required>
+				</div>
+
+				<div class="col-md-4">
+					<label for="nombre">Nombres</label>
+					<input type="text" th:field="*{nombre}" id="nombre" class="form-control" required>
+				</div>
+
+				<div class="col-md-4">
+					<label for="apellido">Apellidos</label>
+					<input type="text" th:field="*{apellido}" id="apellido" class="form-control" required>
+				</div>
+
+				<div class="col-md-4">
+					<label for="codigoIdentificacion">Código Identificación</label>
+					<input type="text" th:field="*{codigoIdentificacion}" id="codigoIdentificacion" class="form-control"
+						required>
 				</div>
 
 				<div class="col-md-4">
@@ -191,16 +209,6 @@
 				<div class="col-md-4">
 					<label for="dni">DNI</label>
 					<input type="text" th:field="*{dni}" id="dni" class="form-control" required>
-				</div>
-
-				<div class="col-md-4">
-					<label for="nombre">Nombre</label>
-					<input type="text" th:field="*{nombre}" id="nombre" class="form-control" required>
-				</div>
-
-				<div class="col-md-4">
-					<label for="apellido">Apellido</label>
-					<input type="text" th:field="*{apellido}" id="apellido" class="form-control" required>
 				</div>
 
 				<div class="col-md-4">
@@ -245,21 +253,20 @@
 
 				<div class="col-md-4">
 					<label for="numeroSeguridadSocial">Nº Seguridad Social</label>
-					<input type="text" th:field="*{numeroSeguridadSocial}" id="numeroSeguridadSocial" class="form-control" required>
+					<input type="text" th:field="*{numeroSeguridadSocial}" id="numeroSeguridadSocial"
+						class="form-control" required>
 				</div>
 
-				<div class="col-md-4">
-					<label for="codigoIdentificacion">Código Identificación</label>
-					<input type="text" th:field="*{codigoIdentificacion}" id="codigoIdentificacion" class="form-control" required>
-				</div>
 
+
+				<!--ELIMINARLO ESTE CAMPO 
 				<div class="col-md-4">
 					<label for="activo">¿Activo?</label>
 					<select th:field="*{activo}" id="activo" class="form-control" required>
 						<option value="true">Sí</option>
 						<option value="false">No</option>
 					</select>
-				</div>
+				</div>-->
 			</div>
 
 			<div class="mt-3">

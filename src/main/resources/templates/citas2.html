@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Listado de Citas</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: auto;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #d3f9d8;
+        }
+        /* Colores por estado */
+        .cancelada {
+            color: red;
+            font-weight: bold;
+        }
+        .pendiente {
+            color: orange;
+            font-weight: bold;
+        }
+        .confirmada {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Listado de Citas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fecha y Hora</th>
+                <th>Motivo</th>
+                <th>Estado</th>
+                <th>ID Paciente</th>
+                <th>ID Médico</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="cita : ${citas}">
+                <td th:text="${cita.id}"></td>
+                <td th:text="${#temporals.format(cita.fechaHora, 'dd/MM/yyyy HH:mm')}"></td>
+                <td th:text="${cita.motivo}"></td>
+                <td th:text="${cita.estado}"
+                    th:classappend="${
+                        cita.estado == 'CANCELADA' ? 'cancelada' :
+                        (cita.estado == 'PENDIENTE' ? 'pendiente' :
+                        (cita.estado == 'CONFIRMADA' ? 'confirmada' : ''))}">
+                </td>
+                <td th:text="${cita.paciente.nombre}"></td>
+                <td th:text="${cita.medico.nombre}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

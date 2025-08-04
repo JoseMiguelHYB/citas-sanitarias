@@ -8,43 +8,43 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.josemiguelhyb.citas_sanitarias.data.PacienteRepository;
 import com.josemiguelhyb.citas_sanitarias.models.Paciente;
+import com.josemiguelhyb.citas_sanitarias.services.PacienteService;
 
 @Controller
 public class RegistroController { // CAMBIAR: A a RegisterController.java
 
-    @Autowired
-    private PacienteRepository pacienteRepository;
+	@Autowired
+	private PacienteService pacienteService;
 
-    @GetMapping("/register")
-    public String mostrarFormularioRegistro(Model model) {
-        model.addAttribute("paciente", new Paciente()); // Es necesario proqeuq register.html necesita un objeto aunque sea vacio
-        return "register"; // Nos lleva a register.html
-    }
+	@GetMapping("/register")
+	public String mostrarFormularioRegistro(Model model) {
+		model.addAttribute("paciente", new Paciente()); // Es necesario proqeuq register.html necesita un objeto aunque
+														// sea vacio
+		return "register"; // Nos lleva a register.html
+	}
 
-    // Autenticaicon Básica sin cifrado ni nada, segutridad plana
-    @PostMapping("/register")
-    public String procesarFormularioRegistro(@ModelAttribute Paciente paciente,
-                                             RedirectAttributes redirectAttributes) {
-        
-    		if (pacienteRepository.existsByUsername(paciente.getUsername())) {
-            redirectAttributes.addFlashAttribute("error", "ERROR: El nombre de usuario ya está registrado");
-            return "redirect:/register";
-        }
-    	
-    	
-    		// Validar antes de guardar
-    		if(pacienteRepository.existsByDni(paciente.getDni())) {
-    	        redirectAttributes.addFlashAttribute("error", "ERROR: El nombre de usuario ya está registrado");
-    	        return "redirect:/register"; // Redirige al register.html
-    		}
-    		
-    		
-    		
-    	
-    		pacienteRepository.save(paciente); // Guarda en la base de datos
-        redirectAttributes.addFlashAttribute("successMessage", "Paciente registrado correctamente");
-        return "redirect:/login";  // Redirige al login.html
-    }
+	// Autenticaicon Básica sin cifrado ni nada, segutridad plana
+	// El PacienteService.java encapusla lógica de negocio relacionada con los
+	// pacientes
+	// En lugar de que el controlador acceda directamente al repositorio, se
+	// recomienda
+	// que interactue con el servicio. proporciona separación de responsabilidades,
+	// pruebas practicas
+	@PostMapping("/register")
+	public String procesarFormularioRegistro(@ModelAttribute Paciente paciente, // paciente tiene los datos cargados del
+																				// fórmulario
+			RedirectAttributes redirectAttributes) {
+		// IMPORTANTE: Aqui Spring hae el binding es decir vincula los
+		// campos de fórmulario con el objeto Paciente
+
+		try {
+			pacienteService.registrarPaciente(paciente);
+			redirectAttributes.addFlashAttribute("successMessage", "Paciente registrado correctamente");
+			return "redirect:/login";
+		} catch (IllegalArgumentException ex) {
+			redirectAttributes.addFlashAttribute("error", ex.getMessage());
+			return "redirect:/register";
+		}
+	}
 }

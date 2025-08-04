@@ -9,14 +9,27 @@ import com.josemiguelhyb.citas_sanitarias.models.Paciente;
 
 @Service
 public class PacienteService {
-	private final PacienteRepository personaRepository;
-	
-	public PacienteService(PacienteRepository personaRepository) {
-		this.personaRepository = personaRepository;
+	private final PacienteRepository pacienteRepository; // Es necesario uan isntancia de la ionterfaz a
+															// pacienteRepository
+
+	public PacienteService(PacienteRepository pacienteRepository) {
+		this.pacienteRepository = pacienteRepository;
 	}
 
 	public List<Paciente> getAllPacientes() {
-		return personaRepository.findAll();
+		return pacienteRepository.findAll(); // El findALl() ya lo implementa spring boot
 	}
-	
+
+	public void registrarPaciente(Paciente paciente) {
+		if (pacienteRepository.existsByUsername(paciente.getUsername())) {
+			throw new IllegalArgumentException("ERROR: El nombre de usuario ya está registrado");
+		}
+
+		if (pacienteRepository.existsByDni(paciente.getDni())) {
+			throw new IllegalArgumentException("ERROR: El DNI ya está registrado");
+		}
+
+		pacienteRepository.save(paciente); 
+	}
+
 }
