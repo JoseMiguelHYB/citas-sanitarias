@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.josemiguelhyb.citas_sanitarias.data.PacienteRepository;
 import com.josemiguelhyb.citas_sanitarias.models.Paciente;
+import com.josemiguelhyb.citas_sanitarias.services.PacienteService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpSession;
 public class LoginController {
 
     @Autowired
-    private PacienteRepository pacienteRepository;
+    private PacienteService pacienteService; // Opción de crear constructor también esta allí
 
     @GetMapping("/login")
     public String mostrarFormularioLogin() {
@@ -30,9 +30,9 @@ public class LoginController {
     								RedirectAttributes redirectAttributes,
     								HttpSession session) {
     	
-        Paciente paciente = pacienteRepository.findByUsernameAndPassword(username, password);
+        Paciente paciente = pacienteService.validarCredenciales(username, password);
 
-        if (paciente != null) { // Si el paciente existe
+        if (paciente != null) { // Si el paciente existe lo mete en una sesión
         		session.setAttribute("paciente", paciente); // <- lo guardas en sesión
             return "redirect:/dashboard"; // O a donde tú quieras
         } else {

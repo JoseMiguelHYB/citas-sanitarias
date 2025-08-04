@@ -31,5 +31,13 @@ public class PacienteService {
 
 		pacienteRepository.save(paciente); 
 	}
+	
+	public Paciente validarCredenciales(String username, String password) {
+		return pacienteRepository.findByUsernameAndPassword(username, password);
+	}
+	
+	// Otros métodos que encapsulan la lógica de negocio	
+	
+	
 
 }

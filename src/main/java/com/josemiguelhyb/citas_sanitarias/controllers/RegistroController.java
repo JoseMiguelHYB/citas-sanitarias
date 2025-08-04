@@ -32,8 +32,7 @@ public class RegistroController { // CAMBIAR: A a RegisterController.java
 	// que interactue con el servicio. proporciona separación de responsabilidades,
 	// pruebas practicas
 	@PostMapping("/register")
-	public String procesarFormularioRegistro(@ModelAttribute Paciente paciente, // paciente tiene los datos cargados del
-																				// fórmulario
+	public String procesarFormularioRegistro(@ModelAttribute Paciente paciente, // paciente tiene los datos cargados del fórmulario
 			RedirectAttributes redirectAttributes) {
 		// IMPORTANTE: Aqui Spring hae el binding es decir vincula los
 		// campos de fórmulario con el objeto Paciente

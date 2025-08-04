@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.josemiguelhyb.citas_sanitarias.services.PacienteService;
 
+// El controlado se enfoca en manejar flujos y redireccionbes, no lógica de negocio. 
+// De esa forma mañana si squieremos cambair el sistema para que use JWT, o agregar hash a la contraseña,
+// solo tocas PacienteService, y no múltiples controladores.
+
 @Controller
 @RequestMapping("/pacientes") 
 public class PacienteController {

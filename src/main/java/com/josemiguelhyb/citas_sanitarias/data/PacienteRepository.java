@@ -14,6 +14,6 @@ public interface PacienteRepository extends JpaRepository<Paciente, Long>{
     Paciente findByDni(String dni);
     boolean existsByDni(String dni);
     boolean existsByUsername(String username);
-    Paciente findByUsernameAndPassword(String username, String password);
+    Paciente findByUsernameAndPassword(String username, String password); // Dar paso al sistema
 
 }
