@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nueva Cita</title>
+</head>
+<body>
+    <h2>Crear nueva cita</h2>
+
+    <form th:action="@{/citas/guardar}" th:object="${cita}" method="post">
+        <label>Fecha:</label>
+        <input type="date" th:field="*{fecha}" required/><br/>
+
+        <label>Hora:</label>
+        <input type="time" th:field="*{hora}" required/><br/>
+
+        <label>Motivo:</label>
+        <input type="text" th:field="*{motivo}" required/><br/>
+
+        <!-- Aquí puedes añadir más campos si tu clase Cita tiene más atributos -->
+
+        <button type="submit">Guardar Cita</button>
+    </form>
+</body>
+</html>

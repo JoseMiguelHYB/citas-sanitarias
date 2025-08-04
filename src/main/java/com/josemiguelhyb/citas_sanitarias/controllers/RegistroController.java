@@ -12,7 +12,7 @@ import com.josemiguelhyb.citas_sanitarias.data.PacienteRepository;
 import com.josemiguelhyb.citas_sanitarias.models.Paciente;
 
 @Controller
-public class RegistroController {
+public class RegistroController { // CAMBIAR: A a RegisterController.java
 
     @Autowired
     private PacienteRepository pacienteRepository;
