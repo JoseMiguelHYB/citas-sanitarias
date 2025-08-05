@@ -12,16 +12,15 @@ import com.josemiguelhyb.citas_sanitarias.models.Paciente;
 import com.josemiguelhyb.citas_sanitarias.services.PacienteService;
 
 @Controller
-public class RegistroController { // CAMBIAR: A a RegisterController.java
+public class PacienteRegistroController { // CAMBIAR: A a RegisterController.java
 
 	@Autowired
 	private PacienteService pacienteService;
 
-	@GetMapping("/register")
+	@GetMapping("/pacientes/register")
 	public String mostrarFormularioRegistro(Model model) {
-		model.addAttribute("paciente", new Paciente()); // Es necesario proqeuq register.html necesita un objeto aunque
-														// sea vacio
-		return "register"; // Nos lleva a register.html
+		model.addAttribute("paciente", new Paciente());
+		return "register-paciente";
 	}
 
 	// Autenticaicon Básica sin cifrado ni nada, segutridad plana
@@ -31,19 +30,17 @@ public class RegistroController { // CAMBIAR: A a RegisterController.java
 	// recomienda
 	// que interactue con el servicio. proporciona separación de responsabilidades,
 	// pruebas practicas
-	@PostMapping("/register")
-	public String procesarFormularioRegistro(@ModelAttribute Paciente paciente, // paciente tiene los datos cargados del fórmulario
+	@PostMapping("/pacientes/register")
+	public String procesarFormularioRegistro(@ModelAttribute Paciente paciente,
 			RedirectAttributes redirectAttributes) {
-		// IMPORTANTE: Aqui Spring hae el binding es decir vincula los
-		// campos de fórmulario con el objeto Paciente
-
 		try {
 			pacienteService.registrarPaciente(paciente);
 			redirectAttributes.addFlashAttribute("successMessage", "Paciente registrado correctamente");
-			return "redirect:/login";
+			return "redirect:/pacientes/login-paciente"; // también puedes ajustar esto si usas esa ruta
 		} catch (IllegalArgumentException ex) {
 			redirectAttributes.addFlashAttribute("error", ex.getMessage());
-			return "redirect:/register";
+			return "redirect:/pacientes/register-paciente";
 		}
 	}
+	
 }

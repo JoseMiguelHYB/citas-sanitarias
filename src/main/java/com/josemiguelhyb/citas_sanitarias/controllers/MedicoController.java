@@ -16,7 +16,7 @@ public class MedicoController {
 	
 	 @GetMapping
 	 public String getAllMedicos(Model model) {
-		 model.addAttribute("medicos", medicoService.getAllMedicos());
+		 model.addAttribute("medicos", medicoService.getAllMedicos());  
 		 return "medicos"; // Thymeleaf: medicos.html
 	 }
 }

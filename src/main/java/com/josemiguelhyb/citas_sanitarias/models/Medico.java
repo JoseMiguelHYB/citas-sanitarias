@@ -13,6 +13,12 @@ public class Medico extends Usuario {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Column(name = "username", unique = true, nullable = false)
+    private String username;
+	
+	@Column(name = "passwd", nullable = false)
+    private String password;
+	
 	@Column(name = "especialidad")
     private String especialidad;
 
@@ -32,14 +38,31 @@ public class Medico extends Usuario {
     	
     }
 
-	public Medico(String especialidad, String centroSalud, String direccionCentro, String codigoPostalCentro,
-			String consulta) {
-		super();
+	public Medico(String username, String password, String especialidad, String centroSalud, String direccionCentro,
+			String codigoPostalCentro, String consulta) {
+		this.username = username;
+		this.password = password;
 		this.especialidad = especialidad;
 		this.centroSalud = centroSalud;
 		this.direccionCentro = direccionCentro;
 		this.codigoPostalCentro = codigoPostalCentro;
 		this.consulta = consulta;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getEspecialidad() {
@@ -82,9 +105,14 @@ public class Medico extends Usuario {
 		this.consulta = consulta;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public String toString() {
-		return "Medico [especialidad=" + especialidad + ", centroSalud=" + centroSalud + ", direccionCentro="
-				+ direccionCentro + ", codigoPostalCentro=" + codigoPostalCentro + ", consulta=" + consulta + "]";
-	}  
+		return "Medico [username=" + username + ", password=" + password + ", especialidad=" + especialidad
+				+ ", centroSalud=" + centroSalud + ", direccionCentro=" + direccionCentro + ", codigoPostalCentro="
+				+ codigoPostalCentro + ", consulta=" + consulta + "]";
+	}       
 }

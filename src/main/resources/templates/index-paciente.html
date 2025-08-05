@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Portal del Médico</title>
+	<title>Portal del Paciente</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 	<style>
@@ -36,29 +36,31 @@
 			text-align: center;
 			text-decoration: none;
 		}
+		/* Color principal para Paciente */
 		.btn-main {
-			background-color: #2e7d32;
+			background-color: #00a99d;
 			color: #fff;
 		}
 		.btn-main:hover {
-			background-color: #1b5e20;
+			background-color: #008e86;
 		}
+		/* Botón secundario con borde y texto en color Paciente */
 		.btn-secondary {
 			background-color: #fff;
-			color: #2e7d32;
-			border: 2px solid #2e7d32;
+			color: #00a99d;
+			border: 2px solid #00a99d;
 		}
 		.btn-secondary:hover {
-			background-color: #f9f9f9;
+			background-color: #f0fefc;
 		}
 	</style>
 </head>
 <body>
 	<div class="container-login">
-		<h2>🩺 Portal del Médico</h2>
-		<p class="text-center">Gestiona tus pacientes y tu agenda</p>
-		<a href="/medicos/register" class="btn-main">Crear cuenta</a>
-		<a href="/medicos/login" class="btn-secondary">Iniciar sesión</a>
+		<h2>👧 Portal del Paciente</h2>
+		<p class="text-center">Gestiona tus citas y perfil médico</p>
+		<a href="/pacientes/register" class="btn-main">Crear cuenta</a>
+		<a href="/pacientes/login" class="btn-secondary">Iniciar sesión</a>
 	</div>
 </body>
 </html>

@@ -14,30 +14,30 @@ import jakarta.servlet.http.HttpSession;
 
 
 @Controller
-public class LoginController {
+public class LoginPacienteController {
 
     @Autowired
     private PacienteService pacienteService; // Opción de crear constructor también esta allí
 
-    @GetMapping("/login")
+    @GetMapping("/pacientes/login")
     public String mostrarFormularioLogin() {
-        return "login"; // Muestra login.html
+        return "login-paciente";
     }
 
-    @PostMapping("/login")
+    @PostMapping("/pacientes/login")
     public String procesarLogin(@RequestParam String username, 
-    								@RequestParam String password,
-    								RedirectAttributes redirectAttributes,
-    								HttpSession session) {
-    	
+                                @RequestParam String password,
+                                RedirectAttributes redirectAttributes,
+                                HttpSession session) {
+        
         Paciente paciente = pacienteService.validarCredenciales(username, password);
 
-        if (paciente != null) { // Si el paciente existe lo mete en una sesión
-        		session.setAttribute("paciente", paciente); // <- lo guardas en sesión
-            return "redirect:/dashboard"; // O a donde tú quieras
+        if (paciente != null) {
+            session.setAttribute("paciente", paciente);
+            return "redirect:/pacientes/dashboard"; // ajusta si tienes vista propia
         } else {
-        		redirectAttributes.addFlashAttribute("error", "Usuario o contraseñas incorrectas");
-            return "redirect:/login";
+            redirectAttributes.addFlashAttribute("error", "Usuario o contraseña incorrectos");
+            return "redirect:/pacientes/login-paciente";
         }
     }
 }
