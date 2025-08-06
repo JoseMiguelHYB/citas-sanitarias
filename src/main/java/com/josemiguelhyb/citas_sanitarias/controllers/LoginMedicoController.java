@@ -36,7 +36,7 @@ public class LoginMedicoController {
             return "redirect:/medicos/dashboard";
         } else {
             redirectAttributes.addFlashAttribute("error", "Usuario o contraseña incorrectos");
-            return "redirect:/medicos/login-medico";
+            return "redirect:/medicos/login";
         }
     }
 }

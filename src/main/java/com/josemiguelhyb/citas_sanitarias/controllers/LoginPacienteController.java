@@ -37,7 +37,7 @@ public class LoginPacienteController {
             return "redirect:/pacientes/dashboard"; //ve al controlador
         } else {
             redirectAttributes.addFlashAttribute("error", "Usuario o contraseña incorrectos");
-            return "redirect:/pacientes/login-paciente";
+            return "redirect:/pacientes/login";
         }
     }
 }

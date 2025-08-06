@@ -13,4 +13,10 @@ public class LogoutController {
 	    session.invalidate(); // Cierra la sesión
 	    return "login-paciente"; // Renderiza Login.html (desde templates/Login.html)
 	}
+	
+	 @PostMapping("/medicos/logout")
+	    public String cerrarSesionMedico(HttpSession session) {
+	        session.invalidate();
+	        return "login-medico";
+	    }
 }
