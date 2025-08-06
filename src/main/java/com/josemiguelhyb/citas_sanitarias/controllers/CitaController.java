@@ -33,6 +33,6 @@ public class CitaController {
     @PostMapping("/guardar")
     public String guardarCita(@ModelAttribute("cita") Cita cita) {
         citaService.guardarCita(cita);
-        return "redirect:/dashboard";
+        return "dashboard"; // Dirigete al fichero dashboard.html
     }
 }

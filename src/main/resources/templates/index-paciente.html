@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,7 +36,6 @@
 			text-align: center;
 			text-decoration: none;
 		}
-		/* Color principal para Paciente */
 		.btn-main {
 			background-color: #00a99d;
 			color: #fff;
@@ -44,7 +43,6 @@
 		.btn-main:hover {
 			background-color: #008e86;
 		}
-		/* Botón secundario con borde y texto en color Paciente */
 		.btn-secondary {
 			background-color: #fff;
 			color: #00a99d;
@@ -59,8 +57,8 @@
 	<div class="container-login">
 		<h2>👧 Portal del Paciente</h2>
 		<p class="text-center">Gestiona tus citas y perfil médico</p>
-		<a href="/pacientes/register" class="btn-main">Crear cuenta</a>
-		<a href="/pacientes/login" class="btn-secondary">Iniciar sesión</a>
+		<a th:href="@{/pacientes/register}" class="btn-main">Crear cuenta</a>
+		<a th:href="@{/pacientes/login}" class="btn-secondary">Iniciar sesión</a>
 	</div>
 </body>
 </html>

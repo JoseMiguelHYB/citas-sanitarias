@@ -8,9 +8,9 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class LogoutController {
 
-	@PostMapping("/logout")
+	@PostMapping("/pacientes/logout")
 	public String cerrarSesion(HttpSession session) {
 	    session.invalidate(); // Cierra la sesión
-	    return "redirect:/login";
+	    return "login-paciente"; // Renderiza Login.html (desde templates/Login.html)
 	}
 }

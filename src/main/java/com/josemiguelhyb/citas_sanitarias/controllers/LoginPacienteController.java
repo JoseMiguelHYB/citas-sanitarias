@@ -34,7 +34,7 @@ public class LoginPacienteController {
 
         if (paciente != null) {
             session.setAttribute("paciente", paciente);
-            return "redirect:/pacientes/dashboard"; // ajusta si tienes vista propia
+            return "redirect:/pacientes/dashboard"; //ve al controlador
         } else {
             redirectAttributes.addFlashAttribute("error", "Usuario o contraseña incorrectos");
             return "redirect:/pacientes/login-paciente";

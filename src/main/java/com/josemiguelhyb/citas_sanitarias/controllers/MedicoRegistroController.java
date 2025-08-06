@@ -6,8 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.josemiguelhyb.citas_sanitarias.models.Medico;
 import com.josemiguelhyb.citas_sanitarias.services.MedicoService;
 
@@ -24,15 +22,14 @@ public class MedicoRegistroController {
     }
 
     @PostMapping("/medicos/register")
-    public String procesarFormularioRegistro(@ModelAttribute Medico medico, 
-    			RedirectAttributes redirectAttributes) {
+    public String procesarFormularioRegistro(@ModelAttribute Medico medico, Model model) {
         try {
             medicoService.registrarMedico(medico);
-            redirectAttributes.addFlashAttribute("successMessage", "Médico registrado correctamente");
-            return "redirect:/medicos/login-medico";
+            model.addAttribute("successMessage", "Médico registrado correctamente");
+            return "login-medico";
         } catch (IllegalArgumentException ex) {
-            redirectAttributes.addFlashAttribute("error", ex.getMessage());
-            return "redirect:/medicos/register-medico";
+        		model.addAttribute("error", ex.getMessage());
+            return "register-medico";
         }
     }
 }

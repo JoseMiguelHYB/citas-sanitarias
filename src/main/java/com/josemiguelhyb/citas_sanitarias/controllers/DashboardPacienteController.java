@@ -1,42 +1,36 @@
 package com.josemiguelhyb.citas_sanitarias.controllers;
 
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.josemiguelhyb.citas_sanitarias.data.CitaRepository;
-import com.josemiguelhyb.citas_sanitarias.models.Cita;
-import com.josemiguelhyb.citas_sanitarias.models.Medico;
 import com.josemiguelhyb.citas_sanitarias.models.Paciente;
 
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-public class DashboardController {
-
-    private final CitaRepository citaRepository;
+public class DashboardPacienteController {
 
     // Inyección de dependencias por constructor
-    public DashboardController(CitaRepository citaRepository) {
-        this.citaRepository = citaRepository;
+    public DashboardPacienteController(CitaRepository citaRepository) {
+    	
     }
 
-    @GetMapping("/dashboard")
+    @GetMapping("/pacientes/dashboard")
     public String mostrarDashboard(HttpSession session, Model model) {
         // Obtener paciente desde la sesión
         Paciente paciente = (Paciente) session.getAttribute("paciente");
 
         if (paciente == null) {
-            return "redirect:/login";
+            return "redirect:/pacientes/login";
         }
 
         // Añadir paciente al modelo
         model.addAttribute("paciente", paciente);
 
         // Buscar la primera cita activa del paciente
-        List<Cita> citas = citaRepository.findByPacienteIdAndEstadoOrderByFechaHoraAsc(paciente.getId(), "PENDIENTE");
+       /* List<Cita> citas = citaRepository.findByPacienteIdAndEstadoOrderByFechaHoraAsc(paciente.getId(), "PENDIENTE");
         Cita cita = citas.isEmpty() ? null : citas.get(0);        
         if (cita != null) {
             model.addAttribute("cita", cita);
@@ -47,8 +41,8 @@ public class DashboardController {
                 model.addAttribute("medico", medico);
             }
         }
-
-        // Renderizar la vista dashboard.html
-        return "dashboard";
+		*/
+        // Renderizar la vista dashboard-paciente.html
+        return "dashboard-paciente";
     }
 }

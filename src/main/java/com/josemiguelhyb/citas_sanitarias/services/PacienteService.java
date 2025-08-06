@@ -20,7 +20,7 @@ public class PacienteService {
 		return pacienteRepository.findAll(); // El findALl() ya lo implementa spring boot
 	}
 
-	public void registrarPaciente(Paciente paciente) {
+	public void registrarPaciente(Paciente paciente) { 
 		if (pacienteRepository.existsByUsername(paciente.getUsername())) {
 			throw new IllegalArgumentException("ERROR: El nombre de usuario ya está registrado");
 		}
@@ -30,6 +30,7 @@ public class PacienteService {
 		}
 
 		pacienteRepository.save(paciente); 
+	    System.out.println("Paciente guardado con id: " + paciente.getId());
 	}
 	
 	public Paciente validarCredenciales(String username, String password) {
